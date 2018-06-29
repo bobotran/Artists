@@ -14,13 +14,15 @@
             <Color x:Key="Canvas">#ffffe6</Color>
             <local:PartsConverter x:Key="PartsConverter"/>
             <local:AddressConverter x:Key="AddressConverter"/>
+            <local:FloorConverter x:Key="FloorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Spacing="10" Padding="15">
-        <Button Text="{Binding Event.Address, Converter={StaticResource AddressConverter}}" FontSize="Medium"/>
+        <Button Text="{Binding Event.Address, Converter={StaticResource AddressConverter}}" FontSize="Medium"
+                BackgroundColor="Transparent" TextColor="Blue" Clicked="Address_Clicked"/>
         <StackLayout Spacing="30" Orientation="Horizontal">
             <Label Text="{Binding Event.Address.Building}" FontSize="Medium"/>
-            <Label Text="{Binding Event.Address.City}" FontSize="Medium"/>
+            <Label Text="{Binding Event.Address.FloorLevel, Converter={StaticResource FloorConverter}}" FontSize="Medium"/>
         </StackLayout>
         <Grid>
             <Grid.RowDefinitions>

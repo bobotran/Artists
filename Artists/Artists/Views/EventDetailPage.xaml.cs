@@ -45,5 +45,10 @@ namespace Artists.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewPerformancePage()));
         }
+
+        private void Address_Clicked(object sender, EventArgs e)
+        {
+            viewModel.openMap();
+        }
     }
 }

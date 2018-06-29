@@ -16,36 +16,36 @@ namespace Artists.BindingConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int floorInt = (int)value;
-            String floor;
+            string floor;
             switch (floorInt)
             {
               case 0: return "";
-              case 1: floor = floorInt.toString() + "st Floor";
+              case 1: floor = floorInt.ToString() + "st Floor";
                       return floor;
-              case 2: floor = floorInt.toString() + "nd Floor";
+              case 2: floor = floorInt.ToString() + "nd Floor";
                       return floor;
-              case 3: floor = floorInt.toString() + "rd Floor";
+              case 3: floor = floorInt.ToString() + "rd Floor";
                       return floor;
-              case 11: floor = floorInt.toString() + "th Floor";
+              case 11: floor = floorInt.ToString() + "th Floor";
                         return floor;
-              case 12: floor = floorInt.toString() + "th Floor";
+              case 12: floor = floorInt.ToString() + "th Floor";
                         return floor;
-              case 13: floor = floorInt.toString() + "th Floor";
+              case 13: floor = floorInt.ToString() + "th Floor";
                         return floor;
-              case 10: floor = floorInt.toString() + "th Floor";
+              case 10: floor = floorInt.ToString() + "th Floor";
                         return floor;
             }
             int newFloorInt = (floorInt % 10);
             switch (newFloorInt)
             {
-              case 1: floor = floorInt.toString() + "st Floor";
+              case 1: floor = floorInt.ToString() + "st Floor";
                       return floor;
-              case 2: floor = floorInt.toString() + "nd Floor";
+              case 2: floor = floorInt.ToString() + "nd Floor";
                       return floor;
-              case 3: floor = floorInt.toString() + "rd Floor";
+              case 3: floor = floorInt.ToString() + "rd Floor";
                       return floor;
             }
-            return (floorInt.toString() + "th Floor");
+            return (floorInt.ToString() + "th Floor");
 
 
 
@@ -94,6 +94,8 @@ namespace Artists.BindingConverters
             // }
 
         }
+
+
         //Don't implement
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

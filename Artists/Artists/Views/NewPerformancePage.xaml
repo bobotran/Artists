@@ -28,16 +28,6 @@
             <TableSection Title="Parts">
                 <ViewCell>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Entry Text="{Binding PartNameEntryInput}" HorizontalOptions="FillAndExpand" 
-                                   x:Name="PartNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
-                                   Placeholder="Part" TextColor="{Binding PartNameEntryColor}"/>
-                            <Entry Text="{Binding PerformerNameEntryInput}" HorizontalOptions="FillAndExpand" 
-                                   x:Name="PerformerNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
-                                   Placeholder="Performer" TextColor="{Binding PerformerNameEntryColor}"/>
-                            <Button Text="Add" Clicked="AddItem_Clicked" IsVisible="{Binding PartsButtonIsVisible}"
-                                    x:Name="PartsButton"/>
-                        </StackLayout>
                         <local:HeightListView x:Name="PartsListView"
                                 ItemsSource="{Binding Parts}"
                                 ItemTapped="Handle_ItemTapped"
@@ -83,6 +73,16 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </local:HeightListView>
+                        <StackLayout Orientation="Horizontal">
+                            <Entry Text="{Binding PartNameEntryInput}" HorizontalOptions="FillAndExpand" 
+                                   x:Name="PartNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
+                                   Placeholder="Part" TextColor="{Binding PartNameEntryColor}"/>
+                            <Entry Text="{Binding PerformerNameEntryInput}" HorizontalOptions="FillAndExpand" 
+                                   x:Name="PerformerNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
+                                   Placeholder="Performer" TextColor="{Binding PerformerNameEntryColor}"/>
+                            <Button Text="Add" Clicked="AddItem_Clicked" IsVisible="{Binding PartsButtonIsVisible}"
+                                    x:Name="PartsButton"/>
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>

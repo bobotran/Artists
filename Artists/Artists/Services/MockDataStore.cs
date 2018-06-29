@@ -20,7 +20,7 @@ namespace Artists.Services
             {
                 new Event { Id = Guid.NewGuid().ToString(), Nickname = "Lakeview", StartTime = new DateTime(2018, 6, 15) },
                 new Event { Id = Guid.NewGuid().ToString(), Nickname = "Laguna Woods Village", StartTime = new DateTime(2018, 6, 17, 19, 0, 0),
-                 EndTime = new DateTime(2018, 6, 17, 21, 0, 0), Address = new Address("24232 Calle Aragon", "Laguna Woods", "Clubhouse #1"),
+                 EndTime = new DateTime(2018, 6, 17, 21, 0, 0), Address = new Address("24232 Calle Aragon", "Laguna Woods", "Clubhouse #1", 13),
                  Performances = new List<Performance>{
                      new Performance
                      {
