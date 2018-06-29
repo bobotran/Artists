@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Artists.Models"
+             xmlns:local1="clr-namespace:Artists.BindingConverters"
+             x:Class="Artists.Views.NewPerformancePage"
+             Title="New Performance">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local1:PartNameConverter x:Key="PartNameConverter"/>
+            <local1:MinutesConverter x:Key="MinutesConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <TableView Intent="Form" HasUnevenRows="True">
+        <TableRoot>
+            <TableSection Title="Host">
+                <EntryCell Label="Your Name" Text="{Binding Host}"/>
+            </TableSection>
+            <TableSection Title="Piece Info">
+                <EntryCell Label="Title: " Text="{Binding PieceTitle}"/>
+                <EntryCell Label="Composer: " Text="{Binding Composer}"/>
+                <EntryCell Label="Time(in minutes): " Text="{Binding Minutes, Converter={StaticResource MinutesConverter}}" 
+                           Keyboard="Numeric"/>
+            </TableSection>
+            <TableSection Title="Parts">
+                <ViewCell>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Entry Text="{Binding PartNameEntryInput}" HorizontalOptions="FillAndExpand" 
+                                   x:Name="PartNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
+                                   Placeholder="Part" TextColor="{Binding PartNameEntryColor}"/>
+                            <Entry Text="{Binding PerformerNameEntryInput}" HorizontalOptions="FillAndExpand" 
+                                   x:Name="PerformerNameEntry" Focused="Entry_Focused" Unfocused="Entry_Unfocused" 
+                                   Placeholder="Performer" TextColor="{Binding PerformerNameEntryColor}"/>
+                            <Button Text="Add" Clicked="AddItem_Clicked" IsVisible="{Binding PartsButtonIsVisible}"
+                                    x:Name="PartsButton"/>
+                        </StackLayout>
+                        <local:HeightListView x:Name="PartsListView"
+                                ItemsSource="{Binding Parts}"
+                                ItemTapped="Handle_ItemTapped"
+                                  VerticalOptions="Fill"
+                                  HasUnevenRows="True">
+                            <x:Arguments>
+                                <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                            </x:Arguments>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.ContextActions>
+                                            <MenuItem Text="Edit" Clicked="EditItem_Clicked" 
+                                                      CommandParameter="{Binding .}"/>
+                                            <MenuItem Text="Delete" Clicked="DeleteItem_Clicked" 
+                                                      CommandParameter="{Binding .}"/>
+                                        </ViewCell.ContextActions>
+                                        <ContentView>
+                                            <StackLayout Margin="0" x:Name="ListLayout" 
+                                                         SizeChanged="ListLayout_SizeChanged"
+                                                         Padding="10, 0, 10, 0">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Text="{Binding PartName, Converter={StaticResource PartNameConverter}}" 
+                                                           FontSize="Medium" 
+                                                           TextColor="{Binding PartNameColor}" 
+                                                           Grid.Column ="0" Grid.Row="0"/>
+                                                    <Label Text="{Binding Performer.Name}" 
+                                                           FontSize="Medium" TextColor="{Binding Performer.NameColor}"
+                                                           Grid.Column="1" Grid.Row="0"/>
+                                                </Grid>
+
+                                            </StackLayout>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </local:HeightListView>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Practice Schedule/Notes">
+                <ViewCell>
+                    <Editor HorizontalOptions="FillAndExpand" Text="{Binding Description}" VerticalOptions="FillAndExpand"
+                            HeightRequest="50"/>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

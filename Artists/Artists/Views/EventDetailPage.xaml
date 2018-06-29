@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Artists.BindingConverters"
+             x:Class="Artists.Views.EventDetailPage"
+             Title="{Binding Event.Nickname}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DateConverter x:Key="DateConverter"/>
+            <local:TimeConverter x:Key="TimeConverter"/>
+            <Color x:Key="Canvas">#ffffe6</Color>
+            <local:PartsConverter x:Key="PartsConverter"/>
+            <local:AddressConverter x:Key="AddressConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Spacing="10" Padding="15">
+        <Button Text="{Binding Event.Address, Converter={StaticResource AddressConverter}}" FontSize="Medium"/>
+        <StackLayout Spacing="30" Orientation="Horizontal">
+            <Label Text="{Binding Event.Address.Building}" FontSize="Medium"/>
+            <Label Text="{Binding Event.Address.City}" FontSize="Medium"/>
+        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Event.StartTime, Converter={StaticResource DateConverter}}" FontSize="Large"
+                   Grid.Row="0" Grid.Column="0"/>
+            <Label Text="{Binding Event.StartTime, Converter={StaticResource TimeConverter}}" FontSize="Medium"
+                   Grid.Row="0" Grid.Column="1" />
+            <Label Text="-" FontSize="Medium" FontAttributes="Bold"
+                   Grid.Row="0" Grid.Column="2" />
+            <Label Text="{Binding Event.EndTime, Converter={StaticResource TimeConverter}}" FontSize="Medium"
+                   Grid.Row="0" Grid.Column="3"/>
+        </Grid>
+        <StackLayout Spacing="5" Orientation="Horizontal">
+            <Label Text="Dress Code: " FontSize="Medium"/>
+            <Label Text="{Binding Event.DressCode}" FontSize="Medium"/>
+        </StackLayout>
+        <ListView ItemsSource="{Binding Event.Performances}"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <ContentView Margin="0">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="34"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"
+                                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding Composer}" FontSize="Medium"
+                                       Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Host}" FontSize="Medium"
+                                       Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding Parts, Converter={StaticResource PartsConverter}}"
+                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium"/>
+                                <BoxView Color="Green"
+                                         Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="New Performance" BackgroundColor="Blue" HorizontalOptions="Center" Clicked="NewPerformance_Clicked"/>
+    </StackLayout>
+</ContentPage>
