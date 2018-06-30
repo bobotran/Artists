@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Artists.Views.LoginPage"
+             BackgroundColor="Black"
+             Padding="30, 0, 30, 0">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="guitarImage.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
+            <StackLayout Grid.Row="1" Grid.Column="0">
+                <Button HorizontalOptions="Center" TextColor="White" FontAttributes="Italic"
+                        Text="Login" BackgroundColor="Transparent" IsVisible="False"/>
+                <Entry HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="True"
+                       Placeholder="Username" PlaceholderColor="White" FontAttributes="Italic"/>
+                <Entry HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="True"
+                       Placeholder="Password" PlaceholderColor="White" FontAttributes="Italic"/>
+                <Button WidthRequest="40" HeightRequest="40" BackgroundColor="White" Text="test" HorizontalOptions="Start"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
