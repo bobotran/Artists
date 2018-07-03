@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HeightCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HeightListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Part.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\PartsConverter.cs" />
@@ -47,6 +48,10 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MePage.xaml.cs">
+      <DependentUpon>MePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\NewPerformancePage.xaml.cs">
       <DependentUpon>NewPerformancePage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -66,6 +71,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\NewEventPage.xaml.cs">
       <DependentUpon>NewEventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +103,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

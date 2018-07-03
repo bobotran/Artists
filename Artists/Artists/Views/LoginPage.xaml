@@ -17,13 +17,14 @@
             </Grid.ColumnDefinitions>
             <Image Source="guitarImage.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
             <StackLayout Grid.Row="1" Grid.Column="0">
-                <Button HorizontalOptions="Center" TextColor="White" FontAttributes="Italic"
-                        Text="Login" BackgroundColor="Transparent" IsVisible="False"/>
-                <Entry HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="True"
-                       Placeholder="Username" PlaceholderColor="White" FontAttributes="Italic"/>
-                <Entry HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="True"
-                       Placeholder="Password" PlaceholderColor="White" FontAttributes="Italic"/>
-                <Button WidthRequest="40" HeightRequest="40" BackgroundColor="White" Text="test" HorizontalOptions="Start"/>
+                <Button x:Name="LoginButton" HorizontalOptions="Center" TextColor="White" FontAttributes="Italic" IsVisible="True"
+                        Text="Login" BackgroundColor="Transparent" Clicked="LoginButton_Clicked"/>
+                <Entry x:Name="UsernameEntry" HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="False"
+                       Placeholder="Username" PlaceholderColor="White" FontAttributes="Italic" Unfocused="UsernameEntry_Unfocused"/>
+                <Entry x:Name="PasswordEntry" HorizontalOptions="FillAndExpand" TextColor="White" IsVisible="False"
+                       Placeholder="Password" PlaceholderColor="White" FontAttributes="Italic" Unfocused="PasswordEntry_Unfocused"/>
+                <Button x:Name="ArrowButton" Image="BlueArrow.png" WidthRequest="64" HeightRequest="42" IsVisible="False"
+                        BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="ArrowButton_Clicked"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -107,7 +107,13 @@
     <AndroidResource Include="Resources\drawable\guitarImage.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\LoginArrow.png" />
+    <AndroidResource Include="Resources\drawable\BlueArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\GearWhite.png" />
   </ItemGroup>
   <Import Project="..\Artists\Artists.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

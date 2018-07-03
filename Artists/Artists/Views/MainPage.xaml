@@ -4,6 +4,17 @@
             xmlns:views="clr-namespace:Artists.Views"
             x:Class="Artists.Views.MainPage">
     <TabbedPage.Children>
+        <NavigationPage Title="Me">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="SmileyFace.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:MePage />
+            </x:Arguments>
+        </NavigationPage>
+        
         <NavigationPage Title="Events">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -14,7 +25,7 @@
                 <views:EventsPage />
             </x:Arguments>
         </NavigationPage>
-        
+
         <NavigationPage Title="Website">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">

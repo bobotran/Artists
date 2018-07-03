@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Artists.Models;
 
 namespace Artists.Views
 {
@@ -11,6 +12,11 @@ namespace Artists.Views
 		public MainPage ()
 		{
 			InitializeComponent ();
-		}
+
+            if (!Login.IsLoggedIn)
+            {
+                Navigation.PushModalAsync(new LoginPage());
+            }
+        }
 	}
 }

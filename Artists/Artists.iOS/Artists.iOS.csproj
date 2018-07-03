@@ -142,6 +142,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\guitarImage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SmileyFace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Gear.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\Artists\Artists.projitems" Label="Shared" />
 </Project>

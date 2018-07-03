@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Artists.Models;
+
 namespace Artists.Droid
 {
     [Activity(Label = "Artists", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -21,6 +23,12 @@ namespace Artists.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+        }
+
+        public override void OnBackPressed()
+        {
+            if (!Login.IsLoggedIn) { return; }
+            base.OnBackPressed();
         }
     }
 }
