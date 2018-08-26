@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Artists.DTOs;
 using Artists.Models;
 
 namespace Artists.ViewModels
@@ -28,10 +28,13 @@ namespace Artists.ViewModels
             NicknameEntry = Event.Nickname;
             DressCodePicker = Event.DressCode;
             DescriptionEditor = Event.Description;
-            AddressLineEntry = Event.Address.AddressLine;
-            CityEntry = Event.Address.City;
-            BuildingEntry = Event.Address.Building;
-            FloorLevelEntry = Event.Address.FloorLevel;
+            if(Event.Address != null)
+            {
+                AddressLineEntry = Event.Address.AddressLine;
+                CityEntry = Event.Address.City;
+                BuildingEntry = Event.Address.Building;
+                FloorLevelEntry = Event.Address.FloorLevel;
+            }
             StartSpan = Event.StartTime.TimeOfDay;
             EndSpan = Event.EndTime.TimeOfDay;
             Date = Event.StartTime.Date;
@@ -46,7 +49,13 @@ namespace Artists.ViewModels
             Event.StartTime = Date.Add(StartSpan);
             Event.EndTime = Date.Add(EndSpan);
 
-            Event.Address = new Address(AddressLineEntry, CityEntry, BuildingEntry, FloorLevelEntry);
+            if(Event.Address != null)
+            {
+                Event.Address.AddressLine = AddressLineEntry;
+                Event.Address.Building = BuildingEntry;
+                Event.Address.City = CityEntry;
+                Event.Address.FloorLevel = FloorLevelEntry;
+            }
 
             //Event.StartTime = Convert.ToDateTime(StartSpan.ToString());
             //Event.EndTime = Convert.ToDateTime(EndSpan.ToString());

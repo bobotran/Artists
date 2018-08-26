@@ -62,7 +62,7 @@
                                                            FontSize="Medium" 
                                                            TextColor="{Binding PartNameColor}" 
                                                            Grid.Column ="0" Grid.Row="0"/>
-                                                    <Label Text="{Binding Performer.Name}" 
+                                                    <Label Text="{Binding Performer.Username}" 
                                                            FontSize="Medium" TextColor="{Binding Performer.NameColor}"
                                                            Grid.Column="1" Grid.Row="0"/>
                                                 </Grid>

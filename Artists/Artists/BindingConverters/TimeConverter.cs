@@ -19,5 +19,10 @@ namespace Artists.BindingConverters
             Console.WriteLine("TimeConverter");
             throw new NotImplementedException();
         }
+
+        public static string ConvertToString(DateTime source)
+        {
+            return source.GetDateTimeFormats('t')[0];
+        }
     }
 }

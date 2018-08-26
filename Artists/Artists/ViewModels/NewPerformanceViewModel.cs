@@ -51,11 +51,11 @@ namespace Artists.ViewModels
         {
             Parts = new ObservableCollection<Part>
             {
-                new Part{PartName = "Cello", Performer = new Performer {Name = "Megan" }},
-                new Part{PartName = "Violin", Performer = new Performer {Name = "Shannon" }},
-                new Part{PartName = "Voice", Performer = new Performer {Name = "Tiffany" }},
-                new Part{PartName = "Cello", Performer = new Performer {Name = "Justin" } },
-                new Part{PartName = "Violin", Performer = new Performer {Name = "Kevin" } }
+                new Part{PartName = "Cello", Performer = new User {Username = "Megan" }},
+                new Part{PartName = "Violin", Performer = new User {Username = "Shannon" }},
+                new Part{PartName = "Voice", Performer = new User {Username = "Tiffany" }},
+                new Part{PartName = "Cello", Performer = new User {Username = "Justin" } },
+                new Part{PartName = "Violin", Performer = new User {Username = "Kevin" } }
             };
         }
 
@@ -64,7 +64,7 @@ namespace Artists.ViewModels
             Parts.Add(new Part
             {
                 PartName = PartNameEntryInput,
-                Performer = new Performer { Name = PerformerNameEntryInput }
+                Performer = new User { Username = PerformerNameEntryInput }
             });
         }
 
@@ -74,21 +74,21 @@ namespace Artists.ViewModels
             PerformerNameEntryInput = string.Empty;
             PartsButtonIsVisible = false;
             PartNameEntryColor = Part.DefaultPartNameColor;
-            PerformerNameEntryColor = Performer.DefaultPerformerNameColor;
+            PerformerNameEntryColor = User.DefaultPerformerNameColor;
         }
 
         public void setNewPartEntriesTo(Part part)
         {
             PartNameEntryInput = part.PartName;
             PartNameEntryColor = part.PartNameColor;
-            PerformerNameEntryInput = part.Performer.Name;
+            PerformerNameEntryInput = part.Performer.Username;
             PerformerNameEntryColor = part.Performer.NameColor;
         }
 
         public void updatePart(Part part)
         {
             part.PartName = PartNameEntryInput;
-            part.Performer.Name = PerformerNameEntryInput;
+            part.Performer.Username = PerformerNameEntryInput;
         }
     }
 }

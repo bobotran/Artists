@@ -49,5 +49,14 @@ namespace Artists.Views
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private async void DeleteItem_Clicked(object sender, EventArgs e)
+        {
+            var mi = sender as MenuItem;
+            if (mi != null)
+            {
+                await viewModel.DeleteEventAsync((Event)mi.CommandParameter);
+            }
+        }
     }
 }

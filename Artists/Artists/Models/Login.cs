@@ -26,7 +26,7 @@ namespace Artists.Models
 
         public static void Log_In(string username, string password)
         {
-            User = new User { Username = username, Password = password };
+            User = new User { Username = username};
         }
 
         public static void Log_Out()

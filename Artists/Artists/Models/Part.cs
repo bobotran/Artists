@@ -6,21 +6,19 @@ using Artists.ViewModels;
 
 namespace Artists.Models
 {
-    public class Part : BaseModel
+    public class Part 
     {
+        public int Id { get; set; }
         public static Color DefaultPartNameColor { get; set; } = Color.Blue;
-        private string partName;
-        public string PartName { get { return partName; } set { SetProperty(ref partName, value); } }
+        public string PartName { get;set; }
 
-        private Color partNameColor = DefaultPartNameColor;
-        public Color PartNameColor { get { return partNameColor; } set { SetProperty(ref partNameColor, value); } }
+        public Color PartNameColor { get; set; } = DefaultPartNameColor;
 
-        private Performer performer;
-        public Performer Performer { get { return performer; } set { SetProperty(ref performer, value); } }
+        public User Performer { get; set; }
 
         public override string ToString()
         {
-            return PartName + ": " + Performer.Name;
+            return PartName + ": " + Performer.Username;
         }
 
         public void setNameColors(Color partNameColor, Color performerNameColor)

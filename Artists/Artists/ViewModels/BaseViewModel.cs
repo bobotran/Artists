@@ -12,7 +12,8 @@ namespace Artists.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Event> DataStore => DependencyService.Get<IDataStore<Event>>() ?? new MockDataStore();
+        public IDataStore<Event> EventManager => DependencyService.Get<IDataStore<Event>>() ?? new MockDataStore();
+        public IDataStore<Performance> PerformanceManager => DependencyService.Get<IDataStore<Performance>>();
 
         bool isBusy = false;
         public bool IsBusy

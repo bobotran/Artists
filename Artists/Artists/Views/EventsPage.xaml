@@ -33,6 +33,11 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Clicked="DeleteItem_Clicked" 
+                                                      CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            <ContentView>
                             <StackLayout Padding="10">
                                 <Label Text="{Binding Nickname}" 
                        LineBreakMode="NoWrap" 
@@ -43,6 +48,7 @@
                        Style="{DynamicResource ListItemDetailTextStyle}"
                        FontSize="13" />
                             </StackLayout>
+                            </ContentView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

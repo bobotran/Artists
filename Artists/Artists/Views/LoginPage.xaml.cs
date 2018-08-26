@@ -46,7 +46,9 @@ namespace Artists.Views
 
         private async void ArrowButton_Clicked(object sender, EventArgs e)
         {
-            Login.Log_In(UsernameEntry.Text, PasswordEntry.Text);
+            //Login.Log_In(UsernameEntry.Text, PasswordEntry.Text);
+            User user = new User { Username = UsernameEntry.Text};
+            MessagingCenter.Send(this, "AddUser", user);
             await Navigation.PopModalAsync();
         }
     }

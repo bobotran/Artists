@@ -101,5 +101,50 @@ namespace Artists.BindingConverters
         {
             throw new NotImplementedException();
         }
+
+        public static string ConvertToString(int value)
+        {
+            int floorInt = value;
+            string floor;
+            switch (floorInt)
+            {
+                case 0: return "";
+                case 1:
+                    floor = floorInt.ToString() + "st Floor";
+                    return floor;
+                case 2:
+                    floor = floorInt.ToString() + "nd Floor";
+                    return floor;
+                case 3:
+                    floor = floorInt.ToString() + "rd Floor";
+                    return floor;
+                case 11:
+                    floor = floorInt.ToString() + "th Floor";
+                    return floor;
+                case 12:
+                    floor = floorInt.ToString() + "th Floor";
+                    return floor;
+                case 13:
+                    floor = floorInt.ToString() + "th Floor";
+                    return floor;
+                case 10:
+                    floor = floorInt.ToString() + "th Floor";
+                    return floor;
+            }
+            int newFloorInt = (floorInt % 10);
+            switch (newFloorInt)
+            {
+                case 1:
+                    floor = floorInt.ToString() + "st Floor";
+                    return floor;
+                case 2:
+                    floor = floorInt.ToString() + "nd Floor";
+                    return floor;
+                case 3:
+                    floor = floorInt.ToString() + "rd Floor";
+                    return floor;
+            }
+            return (floorInt.ToString() + "th Floor");
+        }
     }
 }

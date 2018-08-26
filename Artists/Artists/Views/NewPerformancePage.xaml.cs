@@ -48,7 +48,7 @@ namespace Artists.Views
         }
         public void SaveEdit_Clicked(object sender, EventArgs e)
         {
-            EditedPart.setNameColors(Part.DefaultPartNameColor, Performer.DefaultPerformerNameColor);
+            EditedPart.setNameColors(Part.DefaultPartNameColor, User.DefaultPerformerNameColor);
             ViewModel.updatePart(EditedPart);
             ViewModel.resetNewPartEntries();
 

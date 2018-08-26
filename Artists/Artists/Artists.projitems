@@ -9,19 +9,26 @@
     <Import_RootNamespace>Artists</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\EventForCreationDto.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\PerformanceForCreationDto.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureEventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzurePerformanceManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\AddressConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\FloorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\MinutesConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\PartNameConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\UserDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\UserDatabaseController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Address.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\DateConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HeightCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HeightListView.cs" />
@@ -31,9 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\PartsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Performance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BindingConverters\TimeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Performer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Place.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Token.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockDataStore.cs" />
@@ -42,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MePageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewPerformanceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewEventViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">

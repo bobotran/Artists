@@ -22,5 +22,10 @@ namespace Artists.BindingConverters
             Console.WriteLine("DateConverter");
             throw new NotImplementedException();
         }
+
+        public static string ConvertToString(DateTime source)
+        {
+            return source.GetDateTimeFormats('d')[1];
+        }
     }
 }

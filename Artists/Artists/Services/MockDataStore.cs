@@ -18,16 +18,17 @@ namespace Artists.Services
             items = new List<Event>();
             var mockItems = new List<Event>
             {
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Lakeview", StartTime = new DateTime(2018, 6, 15) },
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Laguna Woods Village", StartTime = new DateTime(2018, 6, 17, 19, 0, 0),
-                 EndTime = new DateTime(2018, 6, 17, 21, 0, 0), Address = new Address("24232 Calle Aragon", "Laguna Woods", "Clubhouse #1", 13),
+                new Event { Id = 0, Nickname = "Lakeview", StartTime = new DateTime(2018, 6, 15) },
+                new Event { Id = 1, Nickname = "Laguna Woods Village", StartTime = new DateTime(2018, 6, 17, 19, 0, 0),
+                 EndTime = new DateTime(2018, 6, 17, 21, 0, 0), Address = new Address{ AddressLine = "24232 Calle Aragon",
+                     City = "Laguna Woods", Building = "Clubhouse #1", FloorLevel = 13 },
                  Performances = new List<Performance>{
                      new Performance
                      {
                          Title = "Dance Macabre",
                          Host = "Ryan Tran",
-                         Parts = new List<Part>{ new Part { PartName = "Violin", Performer = new Performer{Name = "Kevin Tran" } },
-                             new Part{ PartName = "Piano", Performer = new Performer{ Name = "Ryan Tran"} } },
+                         Parts = new List<Part>{ new Part { PartName = "Violin", Performer = new User{ Username = "Kevin Tran" } },
+                             new Part{ PartName = "Piano", Performer = new User{ Username = "Ryan Tran"} } },
                          Composer = "Camille Saint-Saëns",
                          Minutes = 3,
                          Description = "Three days before",
@@ -38,7 +39,7 @@ namespace Artists.Services
                      {
                          Title = "Cello Suite No.1",
                          Host = "Megan Wei",
-                         Parts = new List<Part>{ new Part { PartName = "Cello", Performer = new Performer { Name = "Megan Wei"} } },
+                         Parts = new List<Part>{ new Part { PartName = "Cello", Performer = new User { Username = "Megan Wei"} } },
                          Composer = "Bach",
                          Minutes = 4,
                          Description = "Played at every frickin senior center",
@@ -46,10 +47,10 @@ namespace Artists.Services
                      }
                  }
                 },
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Irvine", StartTime=new DateTime(2018, 7, 5)  },
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Tustin Rehabilitation", StartTime=new DateTime(2018, 8, 21)  },
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Towers", StartTime=new DateTime(2018, 9, 1)  },
-                new Event { Id = Guid.NewGuid().ToString(), Nickname = "Tiffany's", StartTime=new DateTime(2018, 9, 7)  },
+                new Event { Id = 2, Nickname = "Irvine", StartTime=new DateTime(2018, 7, 5)  },
+                new Event { Id = 3, Nickname = "Tustin Rehabilitation", StartTime=new DateTime(2018, 8, 21)  },
+                new Event { Id = 4, Nickname = "Towers", StartTime=new DateTime(2018, 9, 1)  },
+                new Event { Id = 5, Nickname = "Tiffany's", StartTime=new DateTime(2018, 9, 7)  },
             };
 
             foreach (var item in mockItems)
@@ -74,7 +75,7 @@ namespace Artists.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             var _item = items.Where((Event arg) => arg.Id == id).FirstOrDefault();
             items.Remove(_item);
@@ -82,7 +83,7 @@ namespace Artists.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Event> GetItemAsync(string id)
+        public async Task<Event> GetItemAsync(int id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }

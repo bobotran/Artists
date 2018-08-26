@@ -50,5 +50,10 @@ namespace Artists.Views
         {
             viewModel.openMap();
         }
+        protected override void OnAppearing()
+        {
+            viewModel.updateBindings();
+            base.OnAppearing();
+        }
     }
 }

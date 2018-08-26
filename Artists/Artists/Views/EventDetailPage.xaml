@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Artists.BindingConverters"
              x:Class="Artists.Views.EventDetailPage"
-             Title="{Binding Event.Nickname}">
+             Title="{Binding NicknameLabel}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
     </ContentPage.ToolbarItems>
@@ -18,11 +18,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Spacing="10" Padding="15">
-        <Button Text="{Binding Event.Address, Converter={StaticResource AddressConverter}}" FontSize="Medium"
+        <Button Text="{Binding AddressButtonText}" FontSize="Medium"
                 BackgroundColor="Transparent" TextColor="Blue" Clicked="Address_Clicked"/>
         <StackLayout Spacing="30" Orientation="Horizontal">
-            <Label Text="{Binding Event.Address.Building}" FontSize="Medium"/>
-            <Label Text="{Binding Event.Address.FloorLevel, Converter={StaticResource FloorConverter}}" FontSize="Medium"/>
+            <Label Text="{Binding AddressBuildingLabel}" FontSize="Medium"/>
+            <Label Text="{Binding AddressFloorLevelLabel}" FontSize="Medium"/>
         </StackLayout>
         <Grid>
             <Grid.RowDefinitions>
@@ -34,27 +34,28 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
-            <Label Text="{Binding Event.StartTime, Converter={StaticResource DateConverter}}" FontSize="Large"
+            <Label Text="{Binding DateLabel}" FontSize="Large"
                    Grid.Row="0" Grid.Column="0"/>
-            <Label Text="{Binding Event.StartTime, Converter={StaticResource TimeConverter}}" FontSize="Medium"
+            <Label Text="{Binding StartTimeLabel}" FontSize="Medium"
                    Grid.Row="0" Grid.Column="1" />
             <Label Text="-" FontSize="Medium" FontAttributes="Bold"
                    Grid.Row="0" Grid.Column="2" />
-            <Label Text="{Binding Event.EndTime, Converter={StaticResource TimeConverter}}" FontSize="Medium"
+            <Label Text="{Binding EndTimeLabel}" FontSize="Medium"
                    Grid.Row="0" Grid.Column="3"/>
         </Grid>
         <StackLayout Spacing="5" Orientation="Horizontal">
             <Label Text="Dress Code: " FontSize="Medium"/>
-            <Label Text="{Binding Event.DressCode}" FontSize="Medium"/>
+            <Label Text="{Binding DressCodeLabel}" FontSize="Medium"/>
         </StackLayout>
-        <ListView ItemsSource="{Binding Event.Performances}"
+        <ListView ItemsSource="{Binding Performances}"
                   SeparatorVisibility="None"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  RefreshCommand="{Binding LoadPerformancesCommand}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell Height="100">
-                        <ContentView Margin="0">
-                            <Grid RowSpacing="0">
+                    <ViewCell>
+                        <ContentView>
+                            <!--<Grid RowSpacing="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="34"/>
                                     <RowDefinition Height="28"/>
@@ -76,7 +77,12 @@
                                        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium"/>
                                 <BoxView Color="Green"
                                          Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            </Grid>
+                            </Grid>-->
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                                <Label Text="{Binding Composer}" FontSize="Medium"/>
+                                <BoxView Color="Green" HeightRequest="10"/>
+                            </StackLayout>
                         </ContentView>
                     </ViewCell>
                 </DataTemplate>

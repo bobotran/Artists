@@ -25,15 +25,21 @@ namespace Artists.ViewModels
             {
                 var _item = item as Event;
                 Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                await EventManager.AddItemAsync(_item);
             });
 
             MessagingCenter.Subscribe<NewEventPage, Event>(this, "EditEvent", async (obj, item) =>
             {
                 var _event = item as Event;
 
-                await DataStore.UpdateItemAsync(_event);
+                await EventManager.UpdateItemAsync(_event);
             });
+        }
+
+        public async Task DeleteEventAsync(Event ev)
+        {
+            Items.Remove(ev);
+            await EventManager.DeleteItemAsync(ev.Id);
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -46,7 +52,7 @@ namespace Artists.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await EventManager.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
